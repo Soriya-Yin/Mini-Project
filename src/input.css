@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@theme {
+    /* --font-protest: protest ,"sans-serif";
+    --font-Poppins-bold: "Poppins-bold", "sans-serif";
+    --font-Poppins-semi-bold: "Poppins-semibold", "sans-serif";
+    --font-Poppins-medium: "Poppins-medium", "sans-serif";
+    --font-Poppins-regular: "Poppins-regular", "sans-serif"; */
+    --color-Primary1: #344E41;
+    --color-Primary2: #3A5A40;
+    --color-Primary3: #588157;
+    --color-Primary4: #A3B18A;
+    --color-Secondary: #FFFFFF;
+    --color-Accent: #373634;
+    --color-Background: #DAD7CD;
+  
+
+}
