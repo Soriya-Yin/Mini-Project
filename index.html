@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-LIBRARY</title>
+    <link rel="stylesheet" href="../src/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+</head>
+<body class="bg-Background">
+    <!-- header -->
+      <header data-aos="fade-down-right" class="bg-Primary2 m-4 md:m-6 rounded-[20px] px-6 md:px-8 py-3 relative">
+        <div class="flex items-center justify-between">
+            
+            <div class="flex items-center">
+                <div class=" sm:pr-0 md:pr-8 xl:pr-8 2xl:pr-8 pr-0">
+                    <img src="./img/logo.png" alt="Logo" class="h-auto md:w-20 xl:w-20 2xl:w-20 w-10 sm:w-10">
+                </div>
+                <div class="md:h-12 xl:h-12 2xl:h-12 h-8 w-0.5 bg-white sm:h-8"></div>
+            </div>
+
+            <nav class=" md:flex items-center  max-sm:gap-10  md:gap-8 lg:gap-12 xl:gap-14 2xl:gap-14 text-white font-medium md:text-lg xl:text-lg 2xl:text-lg  sm:text-[8px] text-[8px] ">
+                <a href="#" class="hover:text-Primary4 transition-colors max-sm:hidden">Home</a>
+                <a href="./HTML/Categories.html" class="hover:text-Primary4 transition-colors">Categories</a>
+                <a href="./HTML/ReadingList.html" class="hover:text-Primary4 transition-colors">Reading list</a>
+                <a href="./HTML/AboutUs.html" class="hover:text-Primary4 transition-colors">About us</a>
+            </nav>
+
+            <div>
+                <button class="bg-Primary4 text-white md:text-lg xl:text-lg 2xl:text-lg  sm:text-[10px] text-[10px] font-medium md:px-8 xl:px-8 2xl:px-8 sm:px-2 px-2 md:py-3 xl:py-3 2xl:py-3 sm:py-2 py-2 rounded-[12px] hover:bg-[#8fa074] transition-all">
+                    Log in
+                </button>
+            </div>
+
+        </div>
+    </header>
+    <!-- main -->
+     <main>
+        <!-- hero section -->
+            <section class=" rounded-2xl md:m-6  md:px-8   " data-aos="zoom-in-up" >
+        <div class=" mx-auto px-6 grid md:grid-cols-2 gap-15 ">
+            <!-- LEFT TEXT -->
+            <div class="flex ml-5 flex-col justify-center  gap-8 max-sm:gap-2 items-start text-Primary2" data-aos="fade-up-left">
+                <h1 class="max-sm:text-2xl text-5xl font-bold mb-4">
+                Find your favorite <br>
+                book in <span class="font-extrabold text-5xl max-sm:text-3xl text-Primary2">E-LIBRARY</span>
+                </h1>
+    
+                <p class="text-Primary2 text-[25px] max-sm:text-[16px] mb-8 max-w-md">
+                Explore thousands of book, your next favorite read,
+                and build your personal library
+                </p>
+    
+               <div class="flex justify-between w-122.5 max-sm:w-auto items-center bg-Primary2 h-18 max-sm:h-12  rounded-2xl p-3 ">
+                <div class="flex justify-center">
+                   
+                    <input
+                        class="flex-1 justify-center px-4 text-white  outline-none"
+                        placeholder="What are you looking for ?"
+                    />
+                    </div>
+                    <div class="rounded-xl  bg-Primary4 h-12 w-12 max-sm:h-8 max-sm:w-8 flex items-center justify-center left-5 ">
+                        <i class="fa-solid fa-magnifying-glass text-white"></i>
+                    </div>
+               </div>
+    
+            </div>
+            <!-- RIGHT BOOK STACK  -->
+           <div class="grid grid-cols-2 md:grid-cols-2 gap-3 " data-aos="fade-up-right">
+                <div class="grid">
+                    <div>
+                        <img class="h-auto max-w-full rounded-2xl mt-35 transition-transform duration-500 hover:scale-110" src="https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/DemonSlayerKimetsukeyvisual.jpg/250px-DemonSlayerKimetsukeyvisual.jpg" alt="">
+                    </div>
+                </div>
+                <div class="grid gap-2">
+                    <div>
+                      <img class="h-auto max-w-full rounded-2xl transition-transform duration-500 hover:scale-110" src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1633385186i/58701673.jpg" alt="">
+                    </div> 
+                    <div>
+                        <img class="h-auto max-w-50 rounded-2xl transition-transform duration-500 hover:scale-110" src="https://images.booksense.com/images/403/353/9780590353403.jpg" alt="">
+                    </div>
+                
+                </div>
+            </div>
+    
+        </div>
+        </section>
+    <!-- top book -->
+     <section  class="max-w-7xl mx-auto  max-sm:mx-8  ">
+             <button data-aos="fade-left" class="bg-linear-to-r my-6 from-[#738276] to-[#98e698] text-white font-bold py-3 px-15 rounded-lg">
+            Popular Books
+            </button>
+            <div  class="container mx-auto  text-Primary2">
+                <div  data-aos="fade-up" class="grid gap-4 lg:grid-cols-4 lg:m-5 md:grid-cols-2 md:m-5 sm:grid-cols-2 sm:m-5">
+                <div  class="p-2 max-sm:pb-10 flex flex-col rounded-xl bg-white lg:h-[450px] lg:w-full md:h-[450px] h-500 md:w-full max-sm:h-[450px] sm:w-3xs">
+                    <div class="rounded-t-lg lg:w-full lg:h-75 md:w-full md:h-75 sm:w-3xs sm:h-55 overflow-hidden">
+                    <img
+                        class="w-full bg-center bg-no-repeat bg-cover lg:h-85 md:h-75 sm:h-65 transition-transform duration-500 hover:scale-110"
+                        src="https://cdn.kobo.com/book-images/570f9474-589b-494e-aa6f-2292ac218080/1200/1200/False/heaven-official-s-blessing-tian-guan-ci-fu-novel-vol-1.jpg"
+                        alt="Sunset in the mountains"
+                    />
+                    </div>
+                    <div class="mt-4 text-center">
+                        <div class="font-bold text-xl mb-1 line-clamp-2 overflow-ellipsis">Heaven Official's Blessing
+                        </div>
+                        <p class="text-Primary3 text-base line-clamp-1 overflow-ellipsis">
+                            Author: Mo Xiang Tong Xiu
+                        </p>
+                    </div>
+                </div>
+                <div class="p-2 max-sm:pb-10 flex flex-col rounded-xl bg-white lg:h-[450px] lg:w-full md:h-[450px] md:w-full max-sm:h-[450px]  sm:w-3xs">
+                    <div class="rounded-t-lg lg:w-full lg:h-75 md:w-full md:h-75 sm:w-3xs sm:h-55 overflow-hidden">
+                    <img
+                        class="w-full bg-center bg-no-repeat bg-cover lg:h-85 md:h-75 sm:65 transition-transform duration-500 hover:scale-110"
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/First_Single_Volume_Edition_of_The_Lord_of_the_Rings.gif/250px-First_Single_Volume_Edition_of_The_Lord_of_the_Rings.gif"
+                        alt="Sunset in the mountains"
+                    />
+                    </div>
+                    <div class="mt-4 text-center">
+                        <div class="font-bold text-xl mb-1 line-clamp-2 overflow-ellipsis">The Lord of the Rings
+                        </div>
+                        <p class="text-Primary3 text-base line-clamp-1 overflow-ellipsis">
+                            Author:  J. R. R. Tolkien
+                        </p>
+                    </div>
+                </div>
+                <div class="p-2 max-sm:pb-10 flex flex-col rounded-xl bg-white lg:h-[450px] lg:w-full md:h-[450px] md:w-full max-sm:h-[450px]  sm:w-3xs">
+                    <div class="rounded-t-lg lg:w-full lg:h-75 md:w-full md:h-75 sm:w-3xs sm:h-55 overflow-hidden">
+                    <img
+                        class="w-full bg-center bg-no-repeat bg-cover lg:h-85 md:h-75 sm:65 transition-transform duration-500 hover:scale-110"
+                        src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1633385186i/58701673.jpg"
+                        alt="Sunset in the mountains"
+                    />
+                    </div>
+                    <div class="mt-4 text-center">
+                        <div class="font-bold text-xl mb-1 line-clamp-1 overflow-ellipsis ">Grandmaster of Demonic Cultivation
+                        </div>
+                        <p class="text-Primary3 text-base line-clamp-1 overflow-ellipsis">
+                            Author: Mo Xiang Tong Xiu
+                        </p>
+                    </div>
+                </div>
+                <div class="p-2 max-sm:pb-10 flex flex-col rounded-xl bg-white lg:h-[450px] lg:w-full md:h-[450px] md:w-full max-sm:h-[450px]  sm:w-3xs">
+                    <div class="rounded-t-lg lg:w-full lg:h-75 md:w-full md:h-75 sm:w-3xs sm:h-55 overflow-hidden">
+                    <img
+                        class="w-full bg-center bg-no-repeat bg-cover lg:h-85 md:h-75 sm:65 transition-transform duration-500 hover:scale-110"
+                        src="https://m.media-amazon.com/images/I/61UZS3QA1UL._AC_UF1000,1000_QL80_.jpg"
+                        alt="Sunset in the mountains"
+                    />
+                    </div>
+                    <div class="mt-4 text-center">
+                        <div class="font-bold text-xl mb-1 line-clamp-2 overflow-ellipsis">Power
+                        </div>
+                        <p class="text-Primary3 text-base line-clamp-1 overflow-ellipsis">
+                            Author: Robert Greene 
+                        </p>
+                    </div>
+                </div>
+                <div class="p-2 max-sm:pb-10 flex flex-col rounded-xl bg-white lg:h-[450px] lg:w-full md:h-[450px] md:w-full max-sm:h-[450px]  sm:w-3xs">
+                    <div class="rounded-t-lg lg:w-full lg:h-75 md:w-full md:h-75 sm:w-3xs sm:h-55 overflow-hidden">
+                    <img
+                        class="w-full bg-center bg-no-repeat bg-cover lg:h-85 md:h-75 sm:65 transition-transform duration-500 hover:scale-110"
+                        src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1647313559i/60620822.jpg"
+                        alt="Sunset in the mountains"
+                    />
+                    </div>
+                    <div class="mt-4 text-center">
+                        <div class="font-bold text-xl mb-1 line-clamp-2 overflow-ellipsis">The Elf Tangent
+                        </div>
+                        <p class="text-Primary3 text-base line-clamp-1 overflow-ellipsis">
+                            Author:Lindsay Buroker
+                        </p>
+                    </div>
+                </div>
+                <div class="p-2 max-sm:pb-10 flex flex-col rounded-xl bg-white lg:h-[450px] lg:w-full md:h-[450px] md:w-full max-sm:h-[450px]  sm:w-3xs">
+                    <div class="rounded-t-lg lg:w-full lg:h-75 md:w-full md:h-75 sm:w-3xs sm:h-55 overflow-hidden">
+                    <img
+                        class="w-full bg-center bg-no-repeat bg-cover lg:h-85 md:h-75 sm:65 transition-transform duration-500 hover:scale-110"
+                        src="https://m.media-amazon.com/images/I/81z+X1sqgSL._UF1000,1000_QL80_.jpg"
+                        alt="Sunset in the mountains"
+                    />
+                    </div>
+                    <div class="mt-4 text-center">
+                        <div class="font-bold text-xl mb-1 line-clamp-2 overflow-ellipsis">rogue heiress
+                        </div>
+                        <p class="text-Primary3 text-base line-clamp-1 overflow-ellipsis">
+                            Author: Shoshana Rain
+                        </p>
+                    </div>
+                </div>
+                <div class="p-2 max-sm:pb-10 flex flex-col rounded-xl bg-white lg:h-[450px] lg:w-full md:h-[450px] md:w-full max-sm:h-[450px]  sm:w-3xs">
+                    <div class="rounded-t-lg lg:w-full lg:h-75 md:w-full md:h-75 sm:w-3xs sm:h-55 overflow-hidden">
+                    <img
+                        class="w-full bg-center bg-no-repeat bg-cover lg:h-85 md:h-75 sm:65 transition-transform duration-500 hover:scale-110"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8C-iKLQ6gZrJelMVPfA4A1WmAwfRh8VOz_j8Zx8KbrjzN5V7uUPDP8jSS0ahpNns8HDBB4eqbGBtMxf4R2tIkwEHQNCJYpopC3NVVU_I&s=10
+                        alt="Sunset in the mountains"
+                    />
+                    </div>
+                    <div class="mt-4 text-center">
+                        <div class="font-bold text-xl mb-1 line-clamp-2 overflow-ellipsis">The Perks of Loving a Wallflower
+                        </div>
+                        <p class="text-Primary3 text-base line-clamp-1 overflow-ellipsis">
+                            Author: Erica ridley
+                        </p>
+                    </div>
+                </div>
+                <div class="p-2 max-sm:pb-10 flex flex-col rounded-xl bg-white lg:h-[450px] lg:w-full md:h-[450px] md:w-full max-sm:h-[450px]  sm:w-3xs">
+                    <div class="rounded-t-lg lg:w-full lg:h-75 md:w-full md:h-75 sm:w-3xs sm:h-55 overflow-hidden">
+                    <img
+                        class="w-full bg-center bg-no-repeat bg-cover lg:h-85 md:h-75 sm:65 transition-transform duration-500 hover:scale-110"
+                        src="https://m.media-amazon.com/images/I/71At9cR55ZL._AC_UF1000,1000_QL80_.jpg"
+                        alt="Sunset in the mountains"
+                    />
+                    </div>
+                    <div class="mt-4 text-center">
+                        <div class="font-bold text-xl mb-1 line-clamp-2 overflow-ellipsis">shipped by angie hockman
+                        </div>
+                        <p class="text-Primary3 text-base line-clamp-1 overflow-ellipsis">
+                            Author: Entertainment Weekly 
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section> 
+        <!-- TOP RATE BOOK -->
+    <section class="max-w-7xl mx-auto px-6 py-11">
+        <button data-aos="fade-left" class="bg-linear-to-r my-6 from-[#738276] to-[#98e698] text-white font-bold py-3 px-15 rounded-lg">
+            Popular Rate Books
+            </button>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch"> 
+            <div  data-aos="fade-up-right" class="flex flex-col h-full  rounded-3xl p-4">
+                <div class="rounded-2xl overflow-hidden flex-grow">
+                    <img class="w-full h-[300px] lg:h-full object-cover rounded-2xl transition-transform duration-500 hover:scale-110" 
+                        src="https://i.pinimg.com/1200x/36/23/44/3623442de9b98b7aa90eed7b483b54f2.jpg" 
+                        alt="The Haunting of Joliet Prison">
+                </div>
+                <div class="pt-6 px-2">
+                    <h1 class="text-3xl font-black text-Primary2 leading-tight">haikyuu</h1>
+                    <p class="text-Primary3 mt-1 font-medium">Author: <span class="underline cursor-pointer">Haruichi Furudate</span></p>
+                    <p class="text-Primary3 mt-4 leading-relaxed line-clamp-2">
+                       Haikyuu!! is a Japanese volleyball manga and anime series written and illustrated by Haruichi Furudate.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col justify-between gap-4">
+                
+                <div   data-aos="zoom-in-down" class="flex items-center gap-4 p-4 rounded-3xl bg-white shadow-md transition hover:scale-[1.01] flex-1">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZjliODY5MzQtMmViZC00MTZmLWFhMWMtMjMwM2I3OGY1MTRiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Book Cover" class="w-auto h-40 rounded-2xl object-cover shadow-inner flex-shrink-0">
+                    <div class="flex-1">
+                        <h2 class="font-bold text-Primary2 text-lg leading-tight">attack on titan</h2>
+                        <p class="text-sm text-Primary3 opacity-90 mb-1">Author: Hajime Isayama</p>
+                        <p class="text-xs text-Primary3 leading-tight line1-clamp-2 hidden sm:block">
+                           Attack on Titan (\(Shingeki\ no\ Kyojin\)) is a critically acclaimed dark fantasy anime and manga series created by Hajime Isayama,
+                        </p>
+                    </div>
+                </div>
+
+                <div  data-aos="zoom-in-down"class="flex items-center gap-4 p-4 rounded-3xl bg-white shadow-md transition hover:scale-[1.01] flex-1">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c6/Blue_Lock_manga_volume_1.png" alt="Book Cover" class="w-auto h-40 rounded-2xl object-cover shadow-inner flex-shrink-0">
+                    <div class="flex-1">
+                        <h2 class="font-bold text-Primary2 text-lg leading-tight">blue lock</h2>
+                        <p class="text-sm text-Primary3 opacity-90 mb-1">Author: Muneyuki Kaneshiro</p>
+                        <p class="text-xs text-Primary3 leading-tight line-clamp-2 hidden sm:block">
+                            Blue Lock (Japanese: ブルーロック, Hepburn: Burū Rokku) (stylized in Latin script as BLUELOCK) is a Japanese manga series written by Muneyuki Kaneshiro and 
+                        </p>
+                    </div>
+                </div>
+
+                <div   data-aos="zoom-in-down" class="flex items-center gap-4 p-4 rounded-3xl bg-white shadow-md transition hover:scale-[1.01] flex-1">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/46/Jujutsu_kaisen.jpg" alt="Book Cover" class="w-auto h-40 rounded-2xl object-cover shadow-inner flex-shrink-0">
+                    <div class="flex-1">
+                        <h2 class="font-bold text-Primary2 text-lg leading-tight">jujutsu kaisen</h2>
+                        <p class="text-sm text-Primary3 opacity-90 mb-1">Author: Gege Akutami</p>
+                        <p class="text-xs text-Primary3 leading-tight line-clamp-2 hidden sm:block">
+                            The story follows high school student Yuji Itadori as he joins a secret organization of Jujutsu Sorcerers to eliminate a powerful Curse named Ryomen Sukuna.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+     <!-- TOP AUTHOR  -->
+        <section class="max-w-7xl mx-auto px-6 pb-16">
+            <button data-aos="fade-left" class="bg-linear-to-r my-6 from-[#738276] to-[#98e698] text-white font-bold py-3 px-15 rounded-lg">
+            Popular Authors
+            </button>
+            <div class="max-w-7xl mx-auto">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div data-aos="zoom-out-up"  class="bg-[#425a43] rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col">
+                <img src="https://stories.jkrowling.com/wp-content/uploads/2021/09/Shot-B-105_V2_CROP-e1630873059779.jpg" 
+                     alt="J. K. Rowling" 
+                     class="w-full h-80 object-cover">
+                <div class="p-6 text-center flex-grow">
+                    <h3 class="text-white font-bold text-xl mb-3">J. K. Rowling</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed line-clamp-3">
+                        Joanne Rowling better known by her pen name J. K. Rowling, is the British novelist who wrote Harry Potter
+                    </p>
+                </div>
+            </div>
+
+            <div data-aos="zoom-out-up"  class="bg-[#425a43] rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/stephen-king-signs-copies-of-his-book-revival-at-barnes-news-photo-1757537147.pjpeg?crop=0.635xw:0.987xh;0.188xw,0.0129xh&resize=640:*" 
+                     alt="Stephen King" 
+                     class="w-full h-80 object-cover">
+                <div class="p-6 text-center flex-grow">
+                    <h3 class="text-white font-bold text-xl mb-3">Stephen King</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed line-clamp-3">
+                        He is widely known for his horror novels and has also explored other genres, among them suspense, crime, science...
+                    </p>
+                </div>
+            </div>
+
+            <div data-aos="zoom-out-up"  class="bg-[#425a43] rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col">
+                <img src="https://www.btsb.com/btsbcontent/uploads/2013/03/james-patterson.jpg" 
+                     alt="James Patterson" 
+                     class="w-full h-80 object-cover">
+                <div class="p-6 text-center flex-grow">
+                    <h3 class="text-white font-bold text-xl mb-3">James Patterson</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed line-clamp-3">
+                        James Brendan Patterson is an American author. Among his works are the Alex Cross, Michael Bennett, Women's Murder ...
+                    </p>
+                </div>
+            </div>
+
+            <div data-aos="zoom-out-up"  class="bg-[#425a43] rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 cursor-pointer flex flex-col">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD_a7OY0P3TUQTcYH3jKgnQzeoBYDmnMW2Nw&s" 
+                     alt="Haruki Murakami" 
+                     class="w-full h-80 object-cover">
+                <div class="p-6 text-center flex-grow">
+                    <h3 class="text-white font-bold text-xl mb-3">Haruki Murakami</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed line-clamp-3">
+                        Haruki Murakami is a Japanese writer. His novels, essays, and short stories have been best-sellers in Japan and ...
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        </section>
+
+    </main>
+
+    
+    <!-- footer -->
+    <footer class="bg-Primary2 text-white mt-30">
+  <div class="max-w-7xl mx-auto px-4 ">
+
+    <!-- Newsletter -->
+    <div class="text-center mb-10 px-4 pt-10">
+      <!-- Title with logo -->
+      <h2 data-aos="flip-left" class="text-[46px] md:text-3xl font-bold flex justify-center items-center gap-2 flex-wrap ">
+        Stay Update with E-LIBRARY
+       
+      </h2>
+
+      <!-- Subtitle -->
+      <p class="text-[26px] font-bold md:text-base my-8 text-gray-200 max-w-xl mx-auto">
+        Get the latest book recommendation, reading tip, and exclusive content delivered to your inbox
+      </p>
+
+      <!-- Input + Button -->
+      <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4">
+        <!-- Email input -->
+        <input data-aos="fade-right"
+        
+          type="email" 
+          placeholder="Enter your email" 
+          class="w-72 px-4 py-2 rounded-[20px] bg-transparent border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white"
+        />
+
+        <!-- Subscribe button -->
+        <button data-aos="fade-left"
+          class="w-40 bg-white text-black font-semibold px-4 py-2 rounded-[20px] hover:bg-gray-200 transition"
+        >
+          Subscribe
+        </button>
+      </div>
+    </div>
+
+    <!-- Horizontal Separator Line -->
+    <div class="w-full h-[2px] bg-white my-10"></div>
+
+    <!-- Footer Links Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-6 gap-6 ">
+      <!-- About -->
+      <div class=" col-span-2 " data-aos="fade-right">
+        <img data-aos="flip-up" src="../img/logo.png" alt="Logo" class="h-40">
+        
+        <div class="mt-4 space-y-8 text-[24px] font-bold ">
+          <div class="flex items-center space-x-2 gap-4">
+            <span>
+             <i class="fa-solid fa-location-dot"></i>
+            </span><span>San Francisco, CA</span>
+          </div>
+          <div class="flex items-center space-x-2 gap-4">
+            <span>
+              <i class="fa-solid fa-phone"></i>
+            </span><span>+1 (555) 123-4567</span>
+          </div>
+          <div class="flex items-center space-x-2 gap-4">
+            <span><i class="fa-regular fa-envelope"></i></span><span>hello@bookverse.com</span>
+          </div>
+        </div>
+
+        <!-- Social Icons -->
+        
+      </div>
+
+      <!-- Link Columns -->
+      <div data-aos="zoom-in-up">
+        <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Explore</h3>
+        <ul class="space-y-1 test-[20px] list-disc list-inside">
+          <li class="leading-10"><a href="#">New Releases</a></li>
+          <li class="leading-10"><a href="#">Categories</a></li>
+          <li class="leading-10"><a href="#">Popular Books</a></li>
+          <li class="leading-10"><a href="#">Top Rated</a></li>
+        </ul>
+      </div>
+      <div data-aos="zoom-in-up">
+        <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Features</h3>
+        <ul class="space-y-1 test-[20px] list-disc list-inside">
+          <li class="leading-10"><a href="#">Reading Lists</a></li>
+          <li class="leading-10"><a href="#">Favorites</a></li>
+          <li class="leading-10"><a href="#">Statistics</a></li>
+          <li class="leading-10"><a href="#">Book Reviews</a></li>
+        </ul>
+      </div>
+
+      <div data-aos="zoom-in-up">
+        <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Support</h3>
+        <ul class="space-y-1 test-[20px] list-disc list-inside">
+          <li class="leading-10"><a href="#">Help Center</a></li>
+          <li class="leading-10"><a href="#">Contact Us</a></li>
+          <li class="leading-10"><a href="#">FAQ</a></li>
+          <li class="leading-10"><a href="#">Community</a></li>
+        </ul>
+      </div>
+
+      <div data-aos="zoom-in-up">
+        <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Legal</h3>
+        <ul class="space-y-1 test-[20px] list-disc list-inside">
+          <li  class="leading-10"><a href="#">Privacy Policy</a></li>
+          <li class="leading-10"><a href="#">Terms of Service</a></li>
+          <li class="leading-10"><a href="#">Cookie Policy</a></li>
+          <li class="leading-10"><a href="#">DMCA</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex justify-between flex-wrap " data-aos="zoom-in">
+    <div class="flex space-x-4 mt-4 text-[50px] ">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+    <!-- CSTAD Logo -->
+    
+      <img src="https://inspectra-doc.istad.co/images/istad-logo.png" alt="CSTAD Logo" class="h-[100px] lg:h-[120px] mb-10 ">
+    </div>
+  </div>
+    </footer>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS using Vanilla JS
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 800, // Animation duration in ms
+                once: true,    // Whether animation should happen only once - while scrolling down
+                offset: 100    // Offset (in px) from the original trigger point
+            });
+        });
+    </script>
+</body>
+</html>

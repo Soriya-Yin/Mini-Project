@@ -1,12 +1,392 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About us</title>
-</head>
-<body>
-    <h1>hfsdfii
-    </h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <title>Team Profile</title>
+    <link rel="stylesheet" href="../src/output.css" />
+  </head>
+
+  <body class="bg-[#D6D6CB] font-sans">
+    <!-- header -->
+    <header
+      data-aos="zoom-in"
+      class="bg-Primary2 m-4 md:m-6 rounded-[20px] px-6 md:px-8 py-3 relative"
+    >
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <a href="/index.html">
+          <img
+            class="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-14 xl:h-14 2xl:w-14 2xl:h-14"
+            src="../img/previous (1).png"
+            alt="Logo"
+          />
+          </a>
+        </div>
+
+        <nav
+          class="md:flex items-center gap-5 sm:gap-5 md:gap-8 lg:gap-12 xl:gap-14 2xl:gap-14 text-white font-medium md:text-lg xl:text-lg 2xl:text-lg sm:text-[8px] text-[8px]"
+        >
+          <h2 class=" transition-colors"
+            >Infotmation about our team</h2>
+          
+        </nav>
+        <div>
+          <button
+            class="text-white md:text-lg xl:text-lg 2xl:text-lg sm:text-[10px] text-[10px] font-medium md:px-8 xl:px-8 2xl:px-8 sm:px-2 px-2 md:py-3 xl:py-3 2xl:py-3 sm:py-2 py-2 rounded-[12px] bg-[#8fa074] transition-all"
+          >
+            Log in
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- <section
+      class="max-w-6xl mx-auto px-1 py-12 grid sm:grid-col-1 md:grid-col-1 lg:grid-row-2"
+      data-aos="zoom-in-right"
+    >
+      <div>
+        <h2 class="text-3xl font-bold mb-4 pt-4">About us</h2>
+        <div class="flex">
+          <p
+            class="flg:text-[24px] lg:h-200px 2xl:text-[24px] sm:text-[12px] text-[12px] md:text-[16px] pt-8"
+          >
+            Welcome to our learning group a dedicated team led by a mentor and
+            supported by eight active members. We work together to grow our
+            knowledge, build practical skills, and support each other's learning
+            journeys. Our team is made up of 8 passionate and motivated members,
+            each with their own strengths. Together, we collaborate on projects,
+            share resources, and help one another through challenges.
+          </p>
+          <div class="sm:w-50 md:w-260 lg:w-50 h-auto ml-10">
+            <img
+              src="../picture/brain organ-cuate (1).png"
+              alt="Team workspace"
+            />
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <section
+      class="max-w-6xl mx-auto px-6 py-12 overflow-hidden"
+      data-aos="zoom-in-right"
+    >
+      <h2 class="text-3xl font-bold mb-4 pt-4">About us</h2>
+
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-2/3">
+          <p class="text-sm md:text-base lg:text-lg leading-relaxed pt-4">
+            Welcome to our learning group—a dedicated team led by a mentor and
+            supported by eight active members. We work together to grow our
+            knowledge, build practical skills, and support each other's learning
+            journeys. Our team is made up of 8 passionate and motivated members,
+            each with their own strengths. Together, we collaborate on projects,
+            share resources, and help one another through challenges.
+          </p>
+        </div>
+
+        <div class="w-full md:w-1/3 flex justify-center">
+          <img
+            src="../picture/brain organ-cuate (1).png"
+            alt="Team workspace"
+            class="w-64 md:w-full max-w-xs h-auto"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Team  -->
+    <section class="flex flex-col items-center mb-16" data-aos="fade-up-right">
+      <h2 class="text-3xl font-extrabold mb-12 text-black">
+        Here's our Teacher
+      </h2>
+      <article
+        class="h-44 w-64 rounded-2xl bg-[#3A523E] relative flex flex-col justify-end pb-8 items-center mt-16"
+      >
+        <div
+          class="w-32 h-32 rounded-full border-4 border-white overflow-hidden absolute -top-16 bg-white shadow-lg"
+        >
+          <img
+            src="../picture/Lyzhia.jpg"
+            alt="Eung Lyzhia"
+            class="object-cover w-full h-full"
+          />
+        </div>
+        <div class="text-center">
+          <h3 class="text-white text-lg font-bold">Eung Lyzhia</h3>
+          <p class="text-white text-sm font-medium opacity-90 leading-tight">
+            | Class Adviser
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-extrabold text-center mb-24 text-black">
+        Here's our teamwork
+      </h2>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-28 gap-x-12 justify-items-center"
+      >
+        <article
+          class="h-44 w-64 rounded-2xl bg-[#3A523E] relative flex flex-col justify-end pb-8 items-center"
+          data-aos="fade-up-right"
+        >
+          <div
+            class="w-32 h-32 rounded-full border-4 border-white overflow-hidden absolute -top-16 bg-white"
+          >
+            <img
+              src="../picture/SoriyaYin.jpg"
+              alt="Yin Soriya"
+              class="object-cover w-full h-full"
+            />
+          </div>
+          <div class="text-center">
+            <h3 class="text-white text-xl font-bold">Yin Soriya</h3>
+            <p class="text-white text-sm font-medium opacity-90">
+              | Group Leader
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="h-44 w-64 rounded-2xl bg-[#3A523E] relative flex flex-col justify-end pb-8 items-center"
+          data-aos="fade-down-right"
+        >
+          <div
+            class="w-32 h-32 rounded-full border-4 border-white overflow-hidden absolute -top-16 bg-white"
+          >
+            <img
+              src="../picture/Narea.jpg"
+              alt="Mon Narea"
+              class="object-cover w-full h-full"
+            />
+          </div>
+          <div class="text-center">
+            <h3 class="text-white text-xl font-bold">Mon Narea</h3>
+            <p class="text-white text-sm font-medium opacity-90">
+              | Group Member
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="h-44 w-64 rounded-2xl bg-[#3A523E] relative flex flex-col justify-end pb-8 items-center"
+          data-aos="fade-up-left"
+        >
+          <div
+            class="w-32 h-32 rounded-full border-4 border-white overflow-hidden absolute -top-16 bg-white"
+          >
+            <img
+              src="../picture/Lina.PNG"
+              alt="Lut Lina"
+              class="object-cover w-full h-full"
+            />
+          </div>
+          <div class="text-center">
+            <h3 class="text-white text-xl font-bold">Lut Lina</h3>
+            <p class="text-white text-sm font-medium opacity-90">
+              | Group Member
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="h-44 w-64 rounded-2xl bg-[#3A523E] relative flex flex-col justify-end pb-8 items-center"
+          data-aos="fade-up-right"
+        >
+          <div
+            class="w-32 h-32 rounded-full border-4 border-white overflow-hidden absolute -top-16 bg-white"
+          >
+            <img
+              src="../picture/koemlay.jpg"
+              alt="Pheap Koemlay"
+              class="object-cover w-full h-full"
+            />
+          </div>
+          <div class="text-center">
+            <h3 class="text-white text-xl font-bold">Pheap Koemlay</h3>
+            <p class="text-white text-sm font-medium opacity-90">
+              | Group Member
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="h-44 w-64 rounded-2xl bg-[#3A523E] mt-12 relative flex flex-col justify-end pb-8 items-center"
+          data-aos="fade-down-left"
+        >
+          <div
+            class="w-32 h-32 rounded-full border-4 border-white overflow-hidden absolute -top-16 bg-white"
+          >
+            <img
+              src="../picture/Reaksa.JPG"
+              alt="Bun Reaksa"
+              class="object-cover w-full h-full"
+            />
+          </div>
+          <div class="text-center">
+            <h3 class="text-white text-xl font-bold">Bun Reaksa</h3>
+            <p class="text-white text-sm font-medium opacity-90">
+              | Group Member
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="h-44 w-64 rounded-2xl bg-[#3A523E] mt-12 relative flex flex-col justify-end pb-8 items-center"
+          data-aos="fade-up-left"
+        >
+          <div
+            class="w-32 h-32 rounded-full border-4 border-white overflow-hidden absolute -top-16 bg-white"
+          >
+            <img
+              src="../picture/Tevy.jpg"
+              alt="Chamreun Molikatevy"
+              class="object-cover w-full h-full"
+            />
+          </div>
+          <div class="text-center">
+            <h3 class="text-white text-xl font-bold text-sm">
+              Chamreun Molikatevy
+            </h3>
+            <p class="text-white text-sm font-medium opacity-90">
+              | Group Member
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-Primary2 text-white mt-30">
+  <div class="max-w-7xl mx-auto px-4 ">
+
+    <!-- Newsletter -->
+    <div class="text-center mb-10 px-4 pt-10">
+      <!-- Title with logo -->
+      <h2 data-aos="flip-left" class="text-[46px] md:text-3xl font-bold flex justify-center items-center gap-2 flex-wrap ">
+        Stay Update with E-LIBRARY
+       
+      </h2>
+
+      <!-- Subtitle -->
+      <p class="text-[26px] font-bold md:text-base my-8 text-gray-200 max-w-xl mx-auto">
+        Get the latest book recommendation, reading tip, and exclusive content delivered to your inbox
+      </p>
+
+      <!-- Input + Button -->
+      <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4">
+        <!-- Email input -->
+        <input data-aos="fade-right"
+        
+          type="email" 
+          placeholder="Enter your email" 
+          class="w-72 px-4 py-2 rounded-[20px] bg-transparent border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white"
+        />
+
+        <!-- Subscribe button -->
+        <button data-aos="fade-left"
+          class="w-40 bg-white text-black font-semibold px-4 py-2 rounded-[20px] hover:bg-gray-200 transition"
+        >
+          Subscribe
+        </button>
+      </div>
+    </div>
+
+    <!-- Horizontal Separator Line -->
+    <div class="w-full h-[2px] bg-white my-10"></div>
+
+    <!-- Footer Links Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-6 gap-6 ">
+      <!-- About -->
+      <div class=" col-span-2 " data-aos="fade-right">
+        <img data-aos="flip-up" src="../img/logo.png" alt="Logo" class="h-40">
+        
+        <div class="mt-4 space-y-8 text-[24px] font-bold ">
+          <div class="flex items-center space-x-2 gap-4">
+            <span>
+             <i class="fa-solid fa-location-dot"></i>
+            </span><span>San Francisco, CA</span>
+          </div>
+          <div class="flex items-center space-x-2 gap-4">
+            <span>
+              <i class="fa-solid fa-phone"></i>
+            </span><span>+1 (555) 123-4567</span>
+          </div>
+          <div class="flex items-center space-x-2 gap-4">
+            <span><i class="fa-regular fa-envelope"></i></span><span>hello@bookverse.com</span>
+          </div>
+        </div>
+
+        <!-- Social Icons -->
+        
+      </div>
+
+      <!-- Link Columns -->
+      <div data-aos="zoom-in-up">
+        <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Explore</h3>
+        <ul class="space-y-1 test-[20px] list-disc list-inside">
+          <li class="leading-10"><a href="#">New Releases</a></li>
+          <li class="leading-10"><a href="#">Categories</a></li>
+          <li class="leading-10"><a href="#">Popular Books</a></li>
+          <li class="leading-10"><a href="#">Top Rated</a></li>
+        </ul>
+      </div>
+      <div data-aos="zoom-in-up">
+        <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Features</h3>
+        <ul class="space-y-1 test-[20px] list-disc list-inside">
+          <li class="leading-10"><a href="#">Reading Lists</a></li>
+          <li class="leading-10"><a href="#">Favorites</a></li>
+          <li class="leading-10"><a href="#">Statistics</a></li>
+          <li class="leading-10"><a href="#">Book Reviews</a></li>
+        </ul>
+      </div>
+
+      <div data-aos="zoom-in-up">
+        <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Support</h3>
+        <ul class="space-y-1 test-[20px] list-disc list-inside">
+          <li class="leading-10"><a href="#">Help Center</a></li>
+          <li class="leading-10"><a href="#">Contact Us</a></li>
+          <li class="leading-10"><a href="#">FAQ</a></li>
+          <li class="leading-10"><a href="#">Community</a></li>
+        </ul>
+      </div>
+
+      <div data-aos="zoom-in-up">
+        <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Legal</h3>
+        <ul class="space-y-1 test-[20px] list-disc list-inside">
+          <li  class="leading-10"><a href="#">Privacy Policy</a></li>
+          <li class="leading-10"><a href="#">Terms of Service</a></li>
+          <li class="leading-10"><a href="#">Cookie Policy</a></li>
+          <li class="leading-10"><a href="#">DMCA</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex justify-between flex-wrap " data-aos="zoom-in">
+    <div class="flex space-x-4 mt-4 text-[50px] ">
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+    <!-- CSTAD Logo -->
+    
+      <img src="https://inspectra-doc.istad.co/images/istad-logo.png" alt="CSTAD Logo" class="h-[100px] lg:h-[120px] mb-10 ">
+    </div>
+  </div>
+</footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
 </html>

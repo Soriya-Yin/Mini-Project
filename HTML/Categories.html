@@ -1,12 +1,880 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Library Design</title>
+  <link rel="stylesheet" href="../src/output.css">
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .animate-slideInLeft {
+      animation: slideInLeft 0.7s ease-out forwards;
+    }
+
+    .animate-slideInRight {
+      animation: slideInRight 0.7s ease-out forwards;
+    }
+
+    .animate-scaleIn {
+      animation: scaleIn 0.5s ease-out forwards;
+    }
+
+    .hover-float:hover {
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+
+    .stagger-1 {
+      animation-delay: 0.1s;
+      opacity: 0;
+    }
+
+    .stagger-2 {
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    .stagger-3 {
+      animation-delay: 0.3s;
+      opacity: 0;
+    }
+
+    .stagger-4 {
+      animation-delay: 0.4s;
+      opacity: 0;
+    }
+
+    .stagger-5 {
+      animation-delay: 0.5s;
+      opacity: 0;
+    }
+
+    .stagger-6 {
+      animation-delay: 0.6s;
+      opacity: 0;
+    }
+
+    .btn-hover {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-hover::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn-hover:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .icon-spin:hover {
+      animation: spin 0.5s ease;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    input:focus {
+      animation: pulse 0.3s ease-out;
+    }
+
+    .gradient-shift {
+      background-size: 200% 200%;
+      animation: gradientShift 5s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+
 </head>
-<body>
-    <h1>ii
-    </h1>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  // Initialize AOS using Vanilla JS
+  document.addEventListener('DOMContentLoaded', function () {
+    AOS.init({
+      duration: 800, // Animation duration in ms
+      once: true,    // Whether animation should happen only once - while scrolling down
+      offset: 100    // Offset (in px) from the original trigger point
+    });
+  });
+</script>
+
+<body class="bg-Background">
+  <!-- header -->
+    <header data-aos="zoom-out" class="bg-Primary2 m-4 md:m-6 rounded-[20px] px-6 md:px-8 py-3 relative">
+        <div class="flex items-center justify-between">
+            
+            <a href="/index.html" class="">
+            <div class="flex items-center  ">
+              
+                <img class="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-14 xl:h-14 2xl:w-14 2xl:h-14" src="../img/previous (1).png" alt="Logo">
+            </div>
+            </a>
+
+            <nav class=" md:flex items-center gap-5 sm:gap-5  md:gap-8 lg:gap-12 xl:gap-14 2xl:gap-14 text-white font-medium md:text-lg xl:text-lg 2xl:text-lg  sm:text-[8px] text-[8px] ">
+                <a href="#" class="hover:text-Primary4 transition-colors">Current</a>
+                <a href="#" class="hover:text-Primary4 transition-colors">Current Reading</a>
+                <a href="#" class="hover:text-Primary4 transition-colors">Complete</a>
+            </nav>
+            <div>
+                <button class="bg-Primary4 text-white md:text-lg xl:text-lg 2xl:text-lg  sm:text-[10px] text-[10px] font-medium md:px-8 xl:px-8 2xl:px-8 sm:px-2 px-2 md:py-3 xl:py-3 2xl:py-3 sm:py-2 py-2 rounded-[12px] hover:bg-[#8fa074] transition-all">
+                    Log in
+                </button>
+            </div>
+
+        </div>
+    </header>
+  <!-- Page 1: Book Categories -->
+   <main>
+  <div class=" gradient-shift p-3 sm:p-6">
+    <!-- Main Content -->
+    <div class=" rounded-2xl p-4 sm:p-8 animate-fadeInUp">
+      <!-- Search Bar -->
+      <div class="mx-60 max-sm:mx-5 mb-6 sm:mb-8  bg-white rounded-lg">
+        <div class="relative ">
+          <i class="fas fa-search absolute text-Primary4 left-4 top-1/2 transform -translate-y-1/2 "></i>
+          <input type="text" placeholder="Search for books..."
+            class="w-full pl-12  pr-4 py-3  rounded-lg   text-sm sm:text-base ">
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="flex flex-col sm:flex-row gap-10  mb-6 sm:mb-8">
+        
+        <img src="https://i.pinimg.com/1200x/6e/c4/42/6ec44213cd5150680a5ea78b2e9abf5f.jpg"
+          alt="Call Me By Your Name"
+          class="w-[404px] object-cover rounded-lg shadow-lg hover-float hover-lift animate-slideInLeft">
+        
+        <div class="flex-3 animate-slideInRight">
+          <h1 class="text-[64px] max-sm:text-2xl font-bold mb-4">Find your favorite type of book in categories</h1>
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <img src="https://cdn.prod.website-files.com/617235cde0463e5aa8d3dc95/61948a68f4ef39b30f4c39c3_diary.jpg"
+              alt="Normal People" class="w-auto h-[367px] max-sm:h-auto  object-cover rounded-lg shadow-md hover-float hover-lift">
+            <div class="flex-1">
+              <p class=" text-xl font-semibold mt-10 max-md:hidden ">Explore thousands of books, your <br>
+                 next favorite read, and
+                build your <br> personal library  with a lot of types of books</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommend Books Section -->
+      <div class="mb-4 animate-fadeInUp">
+        <button data-aos="fade-left" class="bg-linear-to-r my-6 from-[#738276] to-[#98e698] text-white font-bold py-3 px-15 rounded-lg">
+            Recommended books
+            </button>
+        
+      </div>
+      <!-- Book Grid -->
+      <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 my-[30px] gap-[30px]">
+        <!-- card 1 -->
+         <div data-aos="fade-up" class="col-span-1 bg-Primary4 rounded-[10px]  text-Primary2">
+            <div class="md:flex lg:flex xl:flex 2xl:flex  gap-[10px]">
+            <img class="sm:w-[60px] md:w-[250px] lg:w-[150px] xl:w-[150px] 2xl:w-[200px] sm:rounded-l-0 md:rounded-l-[10px] lg:rounded-l-[10px] xl:rounded-l-[10px] 2xl:rounded-l-[10px]" src="https://cdn.kobo.com/book-images/570f9474-589b-494e-aa6f-2292ac218080/1200/1200/False/heaven-official-s-blessing-tian-guan-ci-fu-novel-vol-1.jpg" alt="">
+            <div class="p-[20px]">
+                <p class="text-[18px] font-bold ">Heaven official's bressing</p>
+                <p class="pt-[10px] text-[12px]">Disgraced Crown Prince Xie Lian meets a mysterious demon king who rules the world of ghosts and terrifies the Heavens. </p>
+            <div class="mt-[50px]">
+                <p class="text-[12px] font-bold">Mo Xiang Tong Xiu</p>
+            </div>
+            <div>
+                <div class="flex gap-[4px] my-[20px] ">
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>                   
+                    <p class="text-[12px] pl-[20px]">220 reviews</p>
+                    
+                    </div>
+                    <div class="rounded-[10px] bg-Primary2 w-[80px] h-[30px] flex items-center">
+                        <button class="text-white flex mx-auto my-[px]  text-[12px] font-medium ">View</button>
+                    </div>
+            </div>
+            </div>
+            
+            </div>
+         </div>
+         <!-- card 2 -->
+         <div data-aos="fade-up" class="col-span-1 bg-Primary4 rounded-[10px]  text-Primary2">
+            <div class="md:flex lg:flex xl:flex 2xl:flex  gap-[10px]">
+            <img class="sm:w-[60px] md:w-[250px] lg:w-[150px] xl:w-[150px] 2xl:w-[200px] sm:rounded-l-0 md:rounded-l-[10px] lg:rounded-l-[10px] xl:rounded-l-[10px] 2xl:rounded-l-[10px]" src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1519203520i/36336078.jpg" alt="">
+            <div class="p-[20px]">
+                <p class="text-[18px] font-bold ">Call me by your </p>
+                <p class="text-[18px] font-bold "> name</p>
+                <p class="pt-[10px] text-[12px]">Call Me by Your Name is the story of a sudden and powerful romance that blossoms between an adolescent boy and a summer ... </p>
+            <div class="mt-[50px]">
+                <p class="text-[12px] font-bold">André Aciman</p>
+            </div>
+            <div>
+                <div class="flex gap-[4px] my-[20px] ">
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>                   
+                    <p class="text-[12px] pl-[20px]">80 reviews</p>
+                    
+                    </div>
+                    <div class="rounded-[10px] bg-Primary2 w-[80px] h-[30px] flex items-center">
+                        <button class="text-white flex mx-auto my-[px]  text-[12px] font-medium ">View</button>
+                    </div>
+            </div>
+            </div>
+            
+            </div>
+         </div>
+         <!-- card 3 -->
+         <div data-aos="fade-up" class="col-span-1 bg-Primary4 rounded-[10px]  text-Primary2">
+            <div class="md:flex lg:flex xl:flex 2xl:flex  gap-[10px]">
+            <img class=" sm:w-[60px] md:w-[250px] lg:w-[150px] xl:w-[150px] 2xl:w-[200px] sm:rounded-l-0 md:rounded-l-[10px] lg:rounded-l-[10px] xl:rounded-l-[10px] 2xl:rounded-l-[10px] " src="https://m.media-amazon.com/images/I/81eoaOr1aEL._SL1500_.jpg" alt="">
+            <div class="p-[20px]">
+                <p class="text-[18px] font-bold ">grandmaster of demonic cultivation</p>
+                <p class="pt-[10px] text-[12px]">the story of the rise, death, and rebirth of Wei Wuxian (魏无羡), a man who made a name for himself as a cultivator with ...</p>
+            <div class="mt-[50px]">
+                <p class="text-[12px] font-bold">Mo Xiang Tong Xiu</p>
+            </div>
+            <div>
+                <div class="flex gap-[4px] my-[20px] ">
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>                   
+                    <p class="text-[12px] pl-[20px]">45 reviews</p>
+                    
+                    </div>
+                    <div class="rounded-[10px] bg-Primary2 w-[80px] h-[30px] flex items-center">
+                        <button class="text-white flex mx-auto my-[px]  text-[12px] font-medium ">View</button>
+                    </div>
+            </div>
+            </div>
+            
+            </div>
+         </div>
+         <!-- card 4 -->
+         <div data-aos="fade-up" class="col-span-1 bg-Primary4 rounded-[10px]  text-Primary2">
+            <div class="md:flex lg:flex xl:flex 2xl:flex  gap-[10px]">
+            <img class="sm:w-[60px] md:w-[250px] lg:w-[150px] xl:w-[150px] 2xl:w-[200px] sm:rounded-l-0 md:rounded-l-[10px] lg:rounded-l-[10px] xl:rounded-l-[10px] 2xl:rounded-l-[10px]" src="https://m.media-amazon.com/images/I/611X8GI7hpL.jpg" alt="">
+            <div class="p-[20px]">
+                <p class="text-[18px] font-bold ">Power</p>
+                <p class="text-[18px] font-bold ">The 48 laws of Power</p>
+                <p class="pt-[10px] text-[12px]">This multi-million-copy New York Times bestseller is the definitive manual for anyone interested in gaining, observing, or defending... </p>
+            <div class="mt-[50px]">
+                <p class="text-[12px] font-bold">Robert Greene</p>
+            </div>
+            <div>
+                <div class="flex gap-[4px] my-[20px] ">
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>                   
+                    <p class="text-[12px] pl-[20px]">120 reviews</p>
+                    
+                    </div>
+                    <div class="rounded-[10px] bg-Primary2 w-[80px] h-[30px] flex items-center">
+                        <button class="text-white flex mx-auto my-[px]  text-[12px] font-medium ">View</button>
+                    </div>
+            </div>
+            </div>
+            
+            </div>
+         </div>
+         <!-- card 5 -->
+         <div data-aos="fade-up" class="col-span-1 bg-Primary4 rounded-[10px] text-Primary2">
+            <div class="md:flex lg:flex xl:flex 2xl:flex  gap-[10px]">
+            <img class="sm:w-[60px] md:w-[250px] lg:w-[150px] xl:w-[150px] 2xl:w-[200px] sm:rounded-l-0 md:rounded-l-[10px] lg:rounded-l-[10px] xl:rounded-l-[10px] 2xl:rounded-l-[10px]" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1610730335l/53086843.jpg" alt="">
+            <div class="p-[20px]">
+                <p class="text-[18px] font-bold ">you've reached </p>
+                <p class="text-[18px] font-bold ">sam</p>
+                <p class="pt-[10px] text-[12px]">Filled with the heartache of first love and loss, plus a touch of magic, Dustin Thao's You've Reached Sam is an emotional romance... </p>
+            <div class="mt-[50px]">
+                <p class="text-[12px] font-bold">Dustin Thao</p>
+            </div>
+            <div>
+                <div class="flex gap-[4px] my-[20px] ">
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>                   
+                    <p class="text-[12px] pl-[20px]">98 reviews</p>
+                    
+                    </div>
+                    <div class="rounded-[10px] bg-Primary2 w-[80px] h-[30px] flex items-center">
+                        <button class="text-white flex mx-auto my-[px]  text-[12px] font-medium ">View</button>
+                    </div>
+            </div>
+            </div>
+            
+            </div>
+         </div>
+         <!-- card 6 -->
+         <div data-aos="fade-up" class="col-span-1 bg-Primary4 rounded-[10px]  text-Primary2">
+            <div class="md:flex lg:flex xl:flex 2xl:flex  gap-[10px]">
+            <img class="sm:w-[60px] md:w-[250px] lg:w-[150px] xl:w-[150px] 2xl:w-[200px] sm:rounded-l-0 md:rounded-l-[10px] lg:rounded-l-[10px] xl:rounded-l-[10px] 2xl:rounded-l-[10px]" src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1645580888i/60478042.jpg" alt="">
+            <div class="p-[20px]">
+                <p class="text-[18px] font-bold ">Little</p>
+                <p class="text-[18px] font-bold ">  Mushroom</p>
+                <p class="pt-[10px] text-[12px]">The whole point of the story is that An Zhe, our mushroom, lost his spore and wants to find it. He is a sentient mushroom ...  </p>
+            <div class="mt-[50px]">
+                <p class="text-[12px] font-bold"> Shisi</p>
+            </div>
+            <div>
+                <div class="flex gap-[4px] my-[20px] ">
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>                   
+                    <p class="text-[12px] pl-[20px]">67 reviews</p>
+                    
+                    </div>
+                    <div class="rounded-[10px] bg-Primary2 w-[80px] h-[30px] flex items-center">
+                        <button class="text-white flex mx-auto my-[px]  text-[12px] font-medium ">View</button>
+                    </div>
+            </div>
+            </div>
+            
+            </div>
+         </div>
+         <!-- card 7 -->
+         <div data-aos="fade-up" class="col-span-1 bg-Primary4 rounded-[10px]  text-Primary2">
+            <div class="md:flex lg:flex xl:flex 2xl:flex  gap-[10px]">
+            <img class="sm:w-[60px] md:w-[250px] lg:w-[150px] xl:w-[150px] 2xl:w-[200px] sm:rounded-l-0 md:rounded-l-[10px] lg:rounded-l-[10px] xl:rounded-l-[10px] 2xl:rounded-l-[10px]" src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1538742778i/42186465.jpg" alt="">
+            <div class="p-[20px]">
+                <p class="text-[18px] font-bold ">good vibes good </p>
+                <p class="text-[18px] font-bold ">life</p>
+                <p class="pt-[10px] text-[12px]">Mum, I dedicate this book to you. Our life has been tough, but with your strength, faith and perseverance, you've made... </p>
+            <div class="mt-[50px]">
+                <p class="text-[12px] font-bold"> Vex King</p>
+            </div>
+            <div>
+                <div class="flex gap-[4px] my-[20px] ">
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>                   
+                    <p class="text-[12px] pl-[20px]">99 reviews</p>
+                    
+                    </div>
+                    <div class="rounded-[10px] bg-Primary2 w-[80px] h-[30px] flex items-center">
+                        <button class="text-white flex mx-auto my-[px]  text-[12px] font-medium ">View</button>
+                    </div>
+            </div>
+            </div>
+            
+            </div>
+         </div>
+         <!-- card 8 -->
+         <div data-aos="fade-up" class="col-span-1 bg-Primary4 rounded-[10px]  text-Primary2">
+            <div class="md:flex lg:flex xl:flex 2xl:flex  gap-[10px]">
+            <img class="sm:w-[60px] md:w-[250px] lg:w-[150px] xl:w-[150px] 2xl:w-[200px] sm:rounded-l-0 md:rounded-l-[10px] lg:rounded-l-[10px] xl:rounded-l-[10px] 2xl:rounded-l-[10px]" src="https://www.booksfortopics.com/wp-content/uploads/harry-potter-and-the-chamber-of-secrets.jpeg" alt="">
+            <div class="p-[20px]">
+                <p class="text-[18px] font-bold ">Harry </p>
+                <p class="text-[18px] font-bold "> Potter</p>
+                <p class="pt-[10px] text-[12px]"> The novels chronicle the lives of a young wizard, Harry Potter, and his friends, Ron Weasley and Hermione Granger... </p>
+            <div class="mt-[50px]">
+                <p class="text-[12px] font-bold">J. K. Rowling</p>
+            </div>
+            <div>
+                <div class="flex gap-[4px] my-[20px] ">
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>                   
+                    <p class="text-[12px] pl-[20px]">102 reviews</p>
+                    
+                    </div>
+                    <div class="rounded-[10px] bg-Primary2 w-[80px] h-[30px] flex items-center">
+                        <button class="text-white flex mx-auto my-[px]  text-[12px] font-medium ">View</button>
+                    </div>
+            </div>
+            </div>
+            
+            </div>
+         </div>
+         <!-- card 9 -->
+         <div data-aos="fade-up" class="col-span-1 bg-Primary4 rounded-[10px]  text-Primary2">
+            <div class="md:flex lg:flex xl:flex 2xl:flex  gap-[10px]">
+            <img class="sm:w-[60px] md:w-[250px] lg:w-[150px] xl:w-[150px] 2xl:w-[200px] sm:rounded-l-0 md:rounded-l-[10px] lg:rounded-l-[10px] xl:rounded-l-[10px] 2xl:rounded-l-[10px]" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRf_P1iDzS1uLOGfnBXfRvVO2hVkG7h9__8owfUvY7w0I8vEF_0" alt="">
+            <div class="p-[20px]">
+                <p class="text-[18px] font-bold ">Normal</p>
+                <p class="text-[18px] font-bold "> People</p>
+                <p class="pt-[10px] text-[12px]">Disgraced Crown Prince Xie Lian meets a mysterious demon king who rules the world of ghosts and terrifies the... </p>
+            <div class="mt-[50px]">
+                <p class="text-[12px] font-bold">Sally Rooney</p>
+            </div>
+            <div>
+                <div class="flex gap-[4px] my-[20px] ">
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>
+                    <svg class="w-[15px] fill-yellow-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M341.5 45.1C337.4 37.1 329.1 32 320.1 32C311.1 32 302.8 37.1 298.7 45.1L225.1 189.3L65.2 214.7C56.3 216.1 48.9 222.4 46.1 231C43.3 239.6 45.6 249 51.9 255.4L166.3 369.9L141.1 529.8C139.7 538.7 143.4 547.7 150.7 553C158 558.3 167.6 559.1 175.7 555L320.1 481.6L464.4 555C472.4 559.1 482.1 558.3 489.4 553C496.7 547.7 500.4 538.8 499 529.8L473.7 369.9L588.1 255.4C594.5 249 596.7 239.6 593.9 231C591.1 222.4 583.8 216.1 574.8 214.7L415 189.3L341.5 45.1z"/></svg>                   
+                    <p class="text-[12px] pl-[20px]">97 reviews</p>
+                    
+                    </div>
+                    <div class="rounded-[10px] bg-Primary2 w-[80px] h-[30px] flex items-center">
+                        <button class="text-white flex mx-auto my-[px]  text-[12px] font-medium ">View</button>
+                    </div>
+            </div>
+            </div>
+            
+            </div>
+         </div>
+         </div>
+    </div>
+  </div>
+  <!-- Page 2 -->
+   <div class="pb-10 bg-[#FFFFF]" data-aos="fade-up" data-aos-delay="100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="swiper bookSwiper !pb-10 !px-15 relative  ">
+                <div class="swiper-wrapper ">
+                    <div class="swiper-slide ">
+                        <div class="group cursor-pointer">
+                            <div
+                                class="aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
+                                <img src="https://assets.vogue.com/photos/6761dc05212302db86c75b78/3:4/w_748%2Cc_limit/2025%2520Books_Slides_0008_81BhCqRxavL._SY522.jpg"
+                                        alt="Silver Blood" class="w-full h-full object-cover"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="group cursor-pointer">
+                            <div
+                                class="aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105"><img src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593798430_p0_v17%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
+                                        alt="Dark Fantasy" class="w-full h-full object-cover"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="group cursor-pointer">
+                            <div
+                                class="aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
+                                <img src="https://prodimage.images-bn.com/pimages/9798889661115_p0_v6_s1200x1200.jpg"
+                                        alt="Mystery Novel" class="w-full h-full object-cover"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="group cursor-pointer">
+                            <div
+                                class="aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105"><img src="https://137492039.cdn6.editmysite.com/uploads/1/3/7/4/137492039/BKJYDH3QLCFLBWIDRLYDPCIN.jpeg"
+                                        alt="Adventure Story" class="w-full h-full object-cover"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="group cursor-pointer">
+                            <div
+                                class="aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
+                                <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1733917236i/33960710.jpg" alt="Romance Novel" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="group cursor-pointer">
+                            <div
+                                class="aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
+                                <img src="https://www.scholarkh.com/_next/image?url=https%3A%2F%2Fadmin.scholarkh.com%2Fassets%2Fimages%2Fisbn%2Fthumb%2F1753770218ivI6pppyUK.jpg&w=1200&q=75" alt="Sci-Fi Epic" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="group cursor-pointer">
+                            <div
+                                class="aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
+                                <img src="https://i.pinimg.com/1200x/7a/3c/5f/7a3c5f1c452288a027b9a241fb8fbf8a.jpg" alt="Sci-Fi Epic" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="group cursor-pointer">
+                            <div
+                                class="aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-105">
+                                <img src="https://prodimage.images-bn.com/pimages/9780062406682_p0_v8_s192x300.jpg" alt="Sci-Fi Epic" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next "></div>
+                <div class="swiper-button-prev "></div>
+            </div>
+        </div>
+    </div>
+  <!-- Page 3: Book Details & Footer -->
+     <div class=" rounded-2xl p-3 sm:p-6">
+       <!-- Book Showcase Grid -->
+       <div data-aos="zoom-out-up" class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-30 sm:gap-6 mb-8 sm:mb-12">
+         <!-- Book 1: Red White & Royal Blue -->
+         <div  class="bg-white rounded-lg shadow-lg overflow-hidden hover-lift animate-scaleIn stagger-1">
+           <img src="https://i.pinimg.com/1200x/9e/d0/d4/9ed0d4d4c440205ac07f16cefe8deb83.jpg"
+             alt="Red White & Royal Blue"
+             class="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-110">
+           <div class="p-4 sm:p-6">
+             <h3 class="text-xl sm:text-2xl font-bold mb-2">RED WHITE & ROYAL BLUE</h3>
+             <p class="text-sm text-gray-600 mb-3">Author: Casey McQuiston</p>
+             <p class="text-sm text-gray-700">A romantic comedy about the First Son of the United States falling in love
+               with the Prince of Wales.</p>
+           </div>
+         </div>
+   
+         <!-- Book 2: You've Reached Sam -->
+         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover-lift animate-scaleIn stagger-2">
+           <img src="https://i.pinimg.com/736x/04/f1/03/04f103a40cc960484c06bba9213717e2.jpg"
+             alt="You've Reached Sam"
+             class="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-110">
+           <div class="p-4 sm:p-6">
+             <h3 class="text-xl sm:text-2xl font-bold mb-2">YOU'VE REACHED SAM</h3>
+             <p class="text-sm text-gray-600 mb-3">Author: Dustin Thao</p>
+             <p class="text-sm text-gray-700">A heartbreaking story about loss, love, and the impossibility of letting go
+               when tragedy strikes.</p>
+           </div>
+         </div>
+   
+         <!-- Book 3: Heart Stopper -->
+         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover-lift animate-scaleIn stagger-3">
+           <img src="https://i.pinimg.com/736x/e4/0b/5d/e40b5d6773f379eea12249cca98975e0.jpg" alt="Heart Stopper"
+             class="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-110">
+           <div class="p-4 sm:p-6">
+             <h3 class="text-xl sm:text-2xl font-bold mb-2">HEARTSTOPPER</h3>
+             <p class="text-sm text-gray-600 mb-3">Author: Alice Oseman</p>
+             <p class="text-sm text-gray-700">A sweet LGBTQ+ graphic novel about two British teenagers discovering
+               friendship and romance.</p>
+           </div>
+         </div>
+   
+         <!-- Book 4: Sotsu gyo sei (Winter) -->
+         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover-lift animate-scaleIn stagger-4">
+           <img src="https://i.pinimg.com/1200x/0f/59/c2/0f59c21ded3b8cd66f76ac4f36a55985.jpg" alt="Sotsu gyo sei"
+             class="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-110">
+           <div class="p-4 sm:p-6">
+             <h3 class="text-xl sm:text-2xl font-bold mb-2">Sotsu gyo sei (Winter)</h3>
+             <p class="text-sm text-gray-600 mb-3">Author: Kaori Ozaki</p>
+             <p class="text-sm text-gray-700">A Japanese manga exploring the lives of students during their final year at
+               school.</p>
+           </div>
+         </div>
+       </div>
+   
+     
+       </div>
+      </main>
+       <!-- Footer -->
+        <footer class="bg-Primary2 text-white mt-30">
+     <div class="max-w-7xl mx-auto px-4 ">
+   
+       <!-- Newsletter -->
+       <div class="text-center mb-10 px-4 pt-10">
+         <!-- Title with logo -->
+         <h2 data-aos="flip-left" class="text-[46px] md:text-3xl font-bold flex justify-center items-center gap-2 flex-wrap ">
+           Stay Update with E-LIBRARY
+          
+         </h2>
+   
+         <!-- Subtitle -->
+         <p class="text-[26px] font-bold md:text-base my-8 text-gray-200 max-w-xl mx-auto">
+           Get the latest book recommendation, reading tip, and exclusive content delivered to your inbox
+         </p>
+   
+         <!-- Input + Button -->
+         <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4">
+           <!-- Email input -->
+           <input data-aos="fade-right"
+           
+             type="email" 
+             placeholder="Enter your email" 
+             class="w-72 px-4 py-2 rounded-[20px] bg-transparent border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white"
+           />
+   
+           <!-- Subscribe button -->
+           <button data-aos="fade-left"
+             class="w-40 bg-white text-black font-semibold px-4 py-2 rounded-[20px] hover:bg-gray-200 transition"
+           >
+             Subscribe
+           </button>
+         </div>
+       </div>
+   
+       <!-- Horizontal Separator Line -->
+       <div class="w-full h-[2px] bg-white my-10"></div>
+   
+       <!-- Footer Links Grid -->
+       <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-6 gap-6 ">
+         <!-- About -->
+         <div class=" col-span-2 " data-aos="fade-right">
+           <img data-aos="flip-up" src="../img/logo.png" alt="Logo" class="h-40">
+           
+           <div class="mt-4 space-y-8 text-[24px] font-bold ">
+             <div class="flex items-center space-x-2 gap-4">
+               <span>
+                <i class="fa-solid fa-location-dot"></i>
+               </span><span>San Francisco, CA</span>
+             </div>
+             <div class="flex items-center space-x-2 gap-4">
+               <span>
+                 <i class="fa-solid fa-phone"></i>
+               </span><span>+1 (555) 123-4567</span>
+             </div>
+             <div class="flex items-center space-x-2 gap-4">
+               <span><i class="fa-regular fa-envelope"></i></span><span>hello@bookverse.com</span>
+             </div>
+           </div>
+   
+           <!-- Social Icons -->
+           
+         </div>
+   
+         <!-- Link Columns -->
+         <div data-aos="zoom-in-up">
+           <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Explore</h3>
+           <ul class="space-y-1 test-[20px] list-disc list-inside">
+             <li class="leading-10"><a href="#">New Releases</a></li>
+             <li class="leading-10"><a href="#">Categories</a></li>
+             <li class="leading-10"><a href="#">Popular Books</a></li>
+             <li class="leading-10"><a href="#">Top Rated</a></li>
+           </ul>
+         </div>
+         <div data-aos="zoom-in-up">
+           <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Features</h3>
+           <ul class="space-y-1 test-[20px] list-disc list-inside">
+             <li class="leading-10"><a href="#">Reading Lists</a></li>
+             <li class="leading-10"><a href="#">Favorites</a></li>
+             <li class="leading-10"><a href="#">Statistics</a></li>
+             <li class="leading-10"><a href="#">Book Reviews</a></li>
+           </ul>
+         </div>
+   
+         <div data-aos="zoom-in-up">
+           <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Support</h3>
+           <ul class="space-y-1 test-[20px] list-disc list-inside">
+             <li class="leading-10"><a href="#">Help Center</a></li>
+             <li class="leading-10"><a href="#">Contact Us</a></li>
+             <li class="leading-10"><a href="#">FAQ</a></li>
+             <li class="leading-10"><a href="#">Community</a></li>
+           </ul>
+         </div>
+   
+         <div data-aos="zoom-in-up">
+           <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Legal</h3>
+           <ul class="space-y-1 test-[20px] list-disc list-inside">
+             <li  class="leading-10"><a href="#">Privacy Policy</a></li>
+             <li class="leading-10"><a href="#">Terms of Service</a></li>
+             <li class="leading-10"><a href="#">Cookie Policy</a></li>
+             <li class="leading-10"><a href="#">DMCA</a></li>
+           </ul>
+         </div>
+       </div>
+   
+       <div class="flex justify-between flex-wrap " data-aos="zoom-in">
+       <div class="flex space-x-4 mt-4 text-[50px] ">
+             <a href="#"><i class="fab fa-linkedin"></i></a>
+             <a href="#"><i class="fab fa-facebook"></i></a>
+             <a href="#"><i class="fab fa-instagram"></i></a>
+             <a href="#"><i class="fab fa-youtube"></i></a>
+             <a href="#"><i class="fab fa-pinterest"></i></a>
+           </div>
+       <!-- CSTAD Logo -->
+       
+         <img src="https://inspectra-doc.istad.co/images/istad-logo.png" alt="CSTAD Logo" class="h-[100px] lg:h-[120px] mb-10 ">
+       </div>
+     </div>
+         </footer>
+         <script type="module" src="/src/main.tsx"></script>
+       <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+       <script>
+         // Initialize AOS using Vanilla JS
+         document.addEventListener('DOMContentLoaded', function () {
+           AOS.init({
+             duration: 800, // Animation duration in ms
+             once: true,    // Whether animation should happen only once - while scrolling down
+             offset: 100    // Offset (in px) from the original trigger point
+           });
+         });
+       </script>
+       <script>
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            hamburgerBtn.addEventListener('click', () => {
+                // Toggle the visibility of the mobile menu
+                mobileMenu.classList.toggle('hidden');
+            });
+        </script>
+         <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.bookSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                },
+            },
+        });
+    </script>
+     
+   
 </body>
+
 </html>
