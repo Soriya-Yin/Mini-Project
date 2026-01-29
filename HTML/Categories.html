@@ -1,12 +1,661 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Library Design</title>
+  <link rel="stylesheet" href="../src/output.css">
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .animate-slideInLeft {
+      animation: slideInLeft 0.7s ease-out forwards;
+    }
+
+    .animate-slideInRight {
+      animation: slideInRight 0.7s ease-out forwards;
+    }
+
+    .animate-scaleIn {
+      animation: scaleIn 0.5s ease-out forwards;
+    }
+
+    .hover-float:hover {
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+
+    .stagger-1 {
+      animation-delay: 0.1s;
+      opacity: 0;
+    }
+
+    .stagger-2 {
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    .stagger-3 {
+      animation-delay: 0.3s;
+      opacity: 0;
+    }
+
+    .stagger-4 {
+      animation-delay: 0.4s;
+      opacity: 0;
+    }
+
+    .stagger-5 {
+      animation-delay: 0.5s;
+      opacity: 0;
+    }
+
+    .stagger-6 {
+      animation-delay: 0.6s;
+      opacity: 0;
+    }
+
+    .btn-hover {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-hover::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn-hover:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .icon-spin:hover {
+      animation: spin 0.5s ease;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    input:focus {
+      animation: pulse 0.3s ease-out;
+    }
+
+    .gradient-shift {
+      background-size: 200% 200%;
+      animation: gradientShift 5s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+
 </head>
-<body>
-    <h1>ii
-    </h1>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  // Initialize AOS using Vanilla JS
+  document.addEventListener('DOMContentLoaded', function () {
+    AOS.init({
+      duration: 800, // Animation duration in ms
+      once: true,    // Whether animation should happen only once - while scrolling down
+      offset: 100    // Offset (in px) from the original trigger point
+    });
+  });
+</script>
+
+<body class="bg-Background">
+    <header data-aos="fade-down-right" class="bg-Primary2 m-4 md:m-6 rounded-[20px] px-6 md:px-8 py-3 relative">
+        <div class="flex items-center justify-between">
+            
+            <a href="../HTML/Home_page.html" class="">
+            <div class="flex items-center  ">
+              
+                <img class="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-14 xl:h-14 2xl:w-14 2xl:h-14" src="../img/previous (1).png" alt="Logo">
+            </div>
+            </a>
+
+            <nav class=" md:flex items-center gap-5 sm:gap-5  md:gap-8 lg:gap-12 xl:gap-14 2xl:gap-14 text-white font-medium md:text-lg xl:text-lg 2xl:text-lg  sm:text-[8px] text-[8px] ">
+                <a href="#" class="hover:text-Primary4 transition-colors">Current</a>
+                <a href="#" class="hover:text-Primary4 transition-colors">Current Reading</a>
+                <a href="#" class="hover:text-Primary4 transition-colors">Complete</a>
+            </nav>
+            <div>
+                <button class="bg-Primary4 text-white md:text-lg xl:text-lg 2xl:text-lg  sm:text-[10px] text-[10px] font-medium md:px-8 xl:px-8 2xl:px-8 sm:px-2 px-2 md:py-3 xl:py-3 2xl:py-3 sm:py-2 py-2 rounded-[12px] hover:bg-[#8fa074] transition-all">
+                    Log in
+                </button>
+            </div>
+
+        </div>
+    </header>
+  <!-- Page 1: Book Categories -->
+  <div class="min-h-screen bg-gradient-to-br gradient-shift p-3 sm:p-6">
+
+    <!-- Main Content -->
+    <div class="bg-white bg-opacity-90 rounded-2xl p-4 sm:p-8 animate-fadeInUp">
+      <!-- Search Bar -->
+      <div class="mb-6 sm:mb-8 animate-slideInLeft">
+        <div class="relative">
+          <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          <input type="text" placeholder="Search for books..."
+            class="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm sm:text-base transition-all duration-300">
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 mb-6 sm:mb-8">
+        <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=300&h=400&fit=crop"
+          alt="Call Me By Your Name"
+          class="w-full sm:w-48 h-64 sm:h-72 object-cover rounded-lg shadow-lg hover-float hover-lift animate-slideInLeft">
+        <div class="flex-1 animate-slideInRight">
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">Find your favorite type of book in categories</h1>
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=200&h=300&fit=crop"
+              alt="Normal People" class="w-full sm:w-32 h-48 object-cover rounded-lg shadow-md hover-float hover-lift">
+            <div class="flex-1">
+              <p class="text-gray-700 text-sm sm:text-base">Explore thousands of books, your next favorite read, and
+                build your personal library with a lot of types of books</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommend Books Section -->
+      <div class="mb-4 animate-fadeInUp">
+        <h2 class="inline-block bg-green-300 px-4 sm:px-6 py-2 rounded-lg text-lg sm:text-xl font-bold hover-scale">
+          Recommended books</h2>
+      </div>
+      <!-- Book Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <!-- Book Card 1 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col sm:flex-row hover-lift animate-fadeInUp stagger-1">
+          <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=150&h=200&fit=crop"
+            alt="On the Origin of Species"
+            class="w-full sm:w-32 h-48 object-cover transition-transform duration-500 hover:scale-110">
+          <div class="p-4 flex-1">
+            <h3 class="font-bold text-base sm:text-lg mb-1">On the Origin of Species</h3>
+            <p class="text-sm text-gray-600 mb-1">Writer: Charles Darwin</p>
+            <p class="text-xs text-gray-500 mb-3">Year: 1859/2009</p>
+            <p class="text-xs text-gray-600 mb-3">Darwin's theories has turned the earth "The Survival Of The Fittest".
+              This book is an acclaimed explanation of the theory...</p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="bg-green-700 text-white text-xs px-3 py-1 rounded btn-hover">Buy $15.00</span>
+              <button class="text-gray-600 hover:text-green-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-bookmark"></i></button>
+              <button class="text-gray-600 hover:text-red-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-heart"></i></button>
+              <button class="text-gray-600 hover:text-blue-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="fas fa-share-alt"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book Card 2 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col sm:flex-row hover-lift animate-fadeInUp stagger-2">
+          <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=150&h=200&fit=crop"
+            alt="The Great Gatsby"
+            class="w-full sm:w-32 h-48 object-cover transition-transform duration-500 hover:scale-110">
+          <div class="p-4 flex-1">
+            <h3 class="font-bold text-base sm:text-lg mb-1">The Great Gatsby</h3>
+            <p class="text-sm text-gray-600 mb-1">Writer: F. Scott Fitzgerald</p>
+            <p class="text-xs text-gray-500 mb-3">Year: 1925/2004</p>
+            <p class="text-xs text-gray-600 mb-3">A classic American novel set in the Jazz Age. Follow the mysterious
+              Jay Gatsby and his obsession with the beautiful...</p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="bg-green-700 text-white text-xs px-3 py-1 rounded btn-hover">Buy $12.00</span>
+              <button class="text-gray-600 hover:text-green-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-bookmark"></i></button>
+              <button class="text-gray-600 hover:text-red-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-heart"></i></button>
+              <button class="text-gray-600 hover:text-blue-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="fas fa-share-alt"></i></button>
+            </div>
+          </div>
+        </div>
+        <!-- Book Card 3 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col sm:flex-row hover-lift animate-fadeInUp stagger-3">
+          <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=150&h=200&fit=crop"
+            alt="To Kill a Mockingbird"
+            class="w-full sm:w-32 h-48 object-cover transition-transform duration-500 hover:scale-110">
+          <div class="p-4 flex-1">
+            <h3 class="font-bold text-base sm:text-lg mb-1">To Kill a Mockingbird</h3>
+            <p class="text-sm text-gray-600 mb-1">Writer: Harper Lee</p>
+            <p class="text-xs text-gray-500 mb-3">Year: 1960/2006</p>
+            <p class="text-xs text-gray-600 mb-3">A gripping tale of racial injustice and childhood innocence in the
+              American South during the 1930s...</p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="bg-green-700 text-white text-xs px-3 py-1 rounded btn-hover">Buy $14.00</span>
+              <button class="text-gray-600 hover:text-green-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-bookmark"></i></button>
+              <button class="text-gray-600 hover:text-red-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-heart"></i></button>
+              <button class="text-gray-600 hover:text-blue-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="fas fa-share-alt"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book Card 4 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col sm:flex-row hover-lift animate-fadeInUp stagger-4">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=150&h=200&fit=crop" alt="1984"
+            class="w-full sm:w-32 h-48 object-cover transition-transform duration-500 hover:scale-110">
+          <div class="p-4 flex-1">
+            <h3 class="font-bold text-base sm:text-lg mb-1">1984</h3>
+            <p class="text-sm text-gray-600 mb-1">Writer: George Orwell</p>
+            <p class="text-xs text-gray-500 mb-3">Year: 1949/2003</p>
+            <p class="text-xs text-gray-600 mb-3">A dystopian masterpiece about totalitarianism and surveillance.
+              Winston Smith struggles against a tyrannical regime...</p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="bg-green-700 text-white text-xs px-3 py-1 rounded btn-hover">Buy $13.00</span>
+              <button class="text-gray-600 hover:text-green-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-bookmark"></i></button>
+              <button class="text-gray-600 hover:text-red-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-heart"></i></button>
+              <button class="text-gray-600 hover:text-blue-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="fas fa-share-alt"></i></button>
+            </div>
+          </div>
+        </div>
+        <!-- Book Card 5 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col sm:flex-row hover-lift animate-fadeInUp stagger-5">
+          <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=150&h=200&fit=crop"
+            alt="Pride and Prejudice"
+            class="w-full sm:w-32 h-48 object-cover transition-transform duration-500 hover:scale-110">
+          <div class="p-4 flex-1">
+            <h3 class="font-bold text-base sm:text-lg mb-1">Pride and Prejudice</h3>
+            <p class="text-sm text-gray-600 mb-1">Writer: Jane Austen</p>
+            <p class="text-xs text-gray-500 mb-3">Year: 1813/2002</p>
+            <p class="text-xs text-gray-600 mb-3">A timeless romance following Elizabeth Bennet as she navigates issues
+              of manners, morality, and marriage...</p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="bg-green-700 text-white text-xs px-3 py-1 rounded btn-hover">Buy $11.00</span>
+              <button class="text-gray-600 hover:text-green-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-bookmark"></i></button>
+              <button class="text-gray-600 hover:text-red-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-heart"></i></button>
+              <button class="text-gray-600 hover:text-blue-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="fas fa-share-alt"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book Card 6 -->
+        <div
+          class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col sm:flex-row hover-lift animate-fadeInUp stagger-6">
+          <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=150&h=200&fit=crop"
+            alt="The Catcher in the Rye"
+            class="w-full sm:w-32 h-48 object-cover transition-transform duration-500 hover:scale-110">
+          <div class="p-4 flex-1">
+            <h3 class="font-bold text-base sm:text-lg mb-1">The Catcher in the Rye</h3>
+            <p class="text-sm text-gray-600 mb-1">Writer: J.D. Salinger</p>
+            <p class="text-xs text-gray-500 mb-3">Year: 1951/1991</p>
+            <p class="text-xs text-gray-600 mb-3">A coming-of-age story following Holden Caulfield through New York City
+              as he grapples with alienation...</p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="bg-green-700 text-white text-xs px-3 py-1 rounded btn-hover">Buy $12.50</span>
+              <button class="text-gray-600 hover:text-green-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-bookmark"></i></button>
+              <button class="text-gray-600 hover:text-red-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="far fa-heart"></i></button>
+              <button class="text-gray-600 hover:text-blue-600 transition-colors duration-300 hover-scale icon-spin"><i
+                  class="fas fa-share-alt"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Page 2: Book Details & Footer -->
+
+     <div class="m-6 rounded-2xl min-h-screen bg-gradient-to-br from-pink-50 to-blue-50 p-3 sm:p-6">
+       <!-- Book Showcase Grid -->
+       <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 sm:mb-12">
+         <!-- Book 1: Red White & Royal Blue -->
+         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover-lift animate-scaleIn stagger-1">
+           <img src="https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?w=600&h=300&fit=crop"
+             alt="Red White & Royal Blue"
+             class="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-110">
+           <div class="p-4 sm:p-6">
+             <h3 class="text-xl sm:text-2xl font-bold mb-2">RED WHITE & ROYAL BLUE</h3>
+             <p class="text-sm text-gray-600 mb-3">Author: Casey McQuiston</p>
+             <p class="text-sm text-gray-700">A romantic comedy about the First Son of the United States falling in love
+               with the Prince of Wales.</p>
+           </div>
+         </div>
+   
+         <!-- Book 2: You've Reached Sam -->
+         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover-lift animate-scaleIn stagger-2">
+           <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&h=300&fit=crop"
+             alt="You've Reached Sam"
+             class="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-110">
+           <div class="p-4 sm:p-6">
+             <h3 class="text-xl sm:text-2xl font-bold mb-2">YOU'VE REACHED SAM</h3>
+             <p class="text-sm text-gray-600 mb-3">Author: Dustin Thao</p>
+             <p class="text-sm text-gray-700">A heartbreaking story about loss, love, and the impossibility of letting go
+               when tragedy strikes.</p>
+           </div>
+         </div>
+   
+         <!-- Book 3: Heart Stopper -->
+         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover-lift animate-scaleIn stagger-3">
+           <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=300&fit=crop" alt="Heart Stopper"
+             class="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-110">
+           <div class="p-4 sm:p-6">
+             <h3 class="text-xl sm:text-2xl font-bold mb-2">HEARTSTOPPER</h3>
+             <p class="text-sm text-gray-600 mb-3">Author: Alice Oseman</p>
+             <p class="text-sm text-gray-700">A sweet LGBTQ+ graphic novel about two British teenagers discovering
+               friendship and romance.</p>
+           </div>
+         </div>
+   
+         <!-- Book 4: Sotsu gyo sei (Winter) -->
+         <div class="bg-white rounded-lg shadow-lg overflow-hidden hover-lift animate-scaleIn stagger-4">
+           <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=300&fit=crop" alt="Sotsu gyo sei"
+             class="w-full h-48 sm:h-64 object-cover transition-transform duration-500 hover:scale-110">
+           <div class="p-4 sm:p-6">
+             <h3 class="text-xl sm:text-2xl font-bold mb-2">Sotsu gyo sei (Winter)</h3>
+             <p class="text-sm text-gray-600 mb-3">Author: Kaori Ozaki</p>
+             <p class="text-sm text-gray-700">A Japanese manga exploring the lives of students during their final year at
+               school.</p>
+           </div>
+         </div>
+       </div>
+   
+       <!-- Newsletter Section -->
+       <div
+         class="max-w-6xl mx-auto bg-gradient-to-br from-green-700 to-green-900 rounded-2xl p-6 sm:p-8 text-white mb-6 sm:mb-8 animate-fadeInUp hover-lift">
+         <h2 class="text-2xl sm:text-3xl font-bold text-center mb-3">Stay Updated with E-LIBRARY</h2>
+         <p class="text-center mb-6 text-sm sm:text-base px-4">Get the latest book recommendations, reading tips, and
+           exclusive content delivered to your inbox</p>
+         <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md mx-auto">
+           <div class="relative flex-1">
+             <i class="fas fa-envelope absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+             <input type="email" placeholder="Enter your email"
+               class="w-full pl-10 pr-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-300 text-sm sm:text-base transition-all duration-300">
+           </div>
+           <button
+             class="bg-white text-green-800 px-6 sm:px-8 py-3 rounded-lg font-semibold btn-hover text-sm sm:text-base">
+             Subscribe
+           </button>
+         </div>
+       </div>
+   
+       </div>
+       <!-- Footer -->
+        <footer class="bg-Primary2 text-white mt-30">
+     <div class="max-w-7xl mx-auto px-4 ">
+   
+       <!-- Newsletter -->
+       <div class="text-center mb-10 px-4 pt-10">
+         <!-- Title with logo -->
+         <h2 data-aos="flip-left" class="text-[46px] md:text-3xl font-bold flex justify-center items-center gap-2 flex-wrap ">
+           Stay Update with E-LIBRARY
+          
+         </h2>
+   
+         <!-- Subtitle -->
+         <p class="text-[26px] font-bold md:text-base my-8 text-gray-200 max-w-xl mx-auto">
+           Get the latest book recommendation, reading tip, and exclusive content delivered to your inbox
+         </p>
+   
+         <!-- Input + Button -->
+         <div class="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4">
+           <!-- Email input -->
+           <input data-aos="fade-right"
+           
+             type="email" 
+             placeholder="Enter your email" 
+             class="w-72 px-4 py-2 rounded-[20px] bg-transparent border border-white text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-white"
+           />
+   
+           <!-- Subscribe button -->
+           <button data-aos="fade-left"
+             class="w-40 bg-white text-black font-semibold px-4 py-2 rounded-[20px] hover:bg-gray-200 transition"
+           >
+             Subscribe
+           </button>
+         </div>
+       </div>
+   
+       <!-- Horizontal Separator Line -->
+       <div class="w-full h-[2px] bg-white my-10"></div>
+   
+       <!-- Footer Links Grid -->
+       <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-6 gap-6 ">
+         <!-- About -->
+         <div class=" col-span-2 " data-aos="fade-right">
+           <img data-aos="flip-up" src="../img/logo.png" alt="Logo" class="h-40">
+           
+           <div class="mt-4 space-y-8 text-[24px] font-bold ">
+             <div class="flex items-center space-x-2 gap-4">
+               <span>
+                <i class="fa-solid fa-location-dot"></i>
+               </span><span>San Francisco, CA</span>
+             </div>
+             <div class="flex items-center space-x-2 gap-4">
+               <span>
+                 <i class="fa-solid fa-phone"></i>
+               </span><span>+1 (555) 123-4567</span>
+             </div>
+             <div class="flex items-center space-x-2 gap-4">
+               <span><i class="fa-regular fa-envelope"></i></span><span>hello@bookverse.com</span>
+             </div>
+           </div>
+   
+           <!-- Social Icons -->
+           
+         </div>
+   
+         <!-- Link Columns -->
+         <div data-aos="zoom-in-up">
+           <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Explore</h3>
+           <ul class="space-y-1 test-[20px] list-disc list-inside">
+             <li class="leading-10"><a href="#">New Releases</a></li>
+             <li class="leading-10"><a href="#">Categories</a></li>
+             <li class="leading-10"><a href="#">Popular Books</a></li>
+             <li class="leading-10"><a href="#">Top Rated</a></li>
+           </ul>
+         </div>
+         <div data-aos="zoom-in-up">
+           <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Features</h3>
+           <ul class="space-y-1 test-[20px] list-disc list-inside">
+             <li class="leading-10"><a href="#">Reading Lists</a></li>
+             <li class="leading-10"><a href="#">Favorites</a></li>
+             <li class="leading-10"><a href="#">Statistics</a></li>
+             <li class="leading-10"><a href="#">Book Reviews</a></li>
+           </ul>
+         </div>
+   
+         <div data-aos="zoom-in-up">
+           <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Support</h3>
+           <ul class="space-y-1 test-[20px] list-disc list-inside">
+             <li class="leading-10"><a href="#">Help Center</a></li>
+             <li class="leading-10"><a href="#">Contact Us</a></li>
+             <li class="leading-10"><a href="#">FAQ</a></li>
+             <li class="leading-10"><a href="#">Community</a></li>
+           </ul>
+         </div>
+   
+         <div data-aos="zoom-in-up">
+           <h3 class="font-semibold mb-2 text-[24px] font-bold my-5">Legal</h3>
+           <ul class="space-y-1 test-[20px] list-disc list-inside">
+             <li  class="leading-10"><a href="#">Privacy Policy</a></li>
+             <li class="leading-10"><a href="#">Terms of Service</a></li>
+             <li class="leading-10"><a href="#">Cookie Policy</a></li>
+             <li class="leading-10"><a href="#">DMCA</a></li>
+           </ul>
+         </div>
+       </div>
+   
+       <div class="flex justify-between flex-wrap " data-aos="zoom-in">
+       <div class="flex space-x-4 mt-4 text-[50px] ">
+             <a href="#"><i class="fab fa-linkedin"></i></a>
+             <a href="#"><i class="fab fa-facebook"></i></a>
+             <a href="#"><i class="fab fa-instagram"></i></a>
+             <a href="#"><i class="fab fa-youtube"></i></a>
+             <a href="#"><i class="fab fa-pinterest"></i></a>
+           </div>
+       <!-- CSTAD Logo -->
+       
+         <img src="https://inspectra-doc.istad.co/images/istad-logo.png" alt="CSTAD Logo" class="h-[100px] lg:h-[120px] mb-10 ">
+       </div>
+     </div>
+         </footer>
+       <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+       <script>
+         // Initialize AOS using Vanilla JS
+         document.addEventListener('DOMContentLoaded', function () {
+           AOS.init({
+             duration: 800, // Animation duration in ms
+             once: true,    // Whether animation should happen only once - while scrolling down
+             offset: 100    // Offset (in px) from the original trigger point
+           });
+         });
+       </script>
+     
+   
 </body>
+
 </html>
